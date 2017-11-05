@@ -1,9 +1,10 @@
 <template>
-  <div>
-    <router-link to="/add" >
+  <div >
+      <router-link to="/add" >
     <button> Add Employee</button>
     </router-link>
-    <table>
+
+      <table class="pretty-table">
       <tr>
         <th>Index</th>
         <th>employees</th>
@@ -17,24 +18,29 @@
         <td>{{ employee.age }}</td>
         <td>{{ employee.email }}</td>
         <router-link :to="`/update/${index}`">
-        <button @click.prevent="editEmployeeDetails(index)" >Edit</button>
+        <button @click.prevent="editEmployeeDetails(index)" > Edit </button> &nbsp;
         </router-link>
-        <button @click.prevent="deleteEmployeeDetails(index)" >Delete</button>
+        <router-link :to="`/delete/${index}`">
+        <button @click.prevent="deleteEmployeeDetails(index)" > Delete </button>
+        </router-link>
       </tr>
     </table>
+
   </div>
 </template>
 
 <script>
 export default {
   name : 'FormComponent',
+  props : ['employees'],
   data(){
     return {
-      employees: []
+
     }
   },
   methods: {
     deleteEmployeeDetails(index){
+      console.log(index);
       var deleteEntry = confirm("Delete Entry");
       if(deleteEntry){
         this.employees.splice(index, 1);
@@ -44,7 +50,7 @@ export default {
       this.name = this.employees[index].name;
       this.age = this.employees[index].age;
       this.email = this.employees[index].email;
-      this.employees.splice(index, 1);
+      // this.employees.splice(index, 1);
       console.log("write a code for editing");
     }
   },

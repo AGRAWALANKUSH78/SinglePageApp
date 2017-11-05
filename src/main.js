@@ -14,11 +14,11 @@ Vue.use(VueRouter);
 const routes = [
   {
     path : '/',
-    component : FormComponent
+    component : FormComponent,
   },
   {
     path : '/add',
-    component : Registration
+    component : Registration,
   },
   {
     path : '/update/:index',
@@ -34,9 +34,9 @@ const router = new VueRouter({
   routes : routes
 });
 
-new Vue({
+
+const app = new Vue({
   el: '#app',
   router : router,
   render: h => h(App)
 });
-
